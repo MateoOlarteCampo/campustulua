@@ -1,0 +1,13 @@
+<div class="container-fluid">
+	<div class="col-md-12 text-center">
+		<h1><strong>Esperando por activacion</strong></h1>
+	</div>
+
+	<div class="row bootstrap snippets">
+		<%=  render :partial => "users/activations_users/user_card", :collection => users, :as => :user %>
+	</div>
+
+	<div class="row text-center">
+	<%= will_paginate @users %>
+	</div>
+</div>

@@ -1,0 +1,13 @@
+
+<div id="article-container" class="container-fluid">
+  <% if is_admin_user?(current_user) %>
+    <div class="row">
+      <%= link_to 'Crear curso', new_course_path, class: "more-link" %>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <%=  render partial: "course", collection: @courses %>                       
+  </div>  
+</div>
+

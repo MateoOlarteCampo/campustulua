@@ -1,0 +1,71 @@
+<%= form_for(course, :html => { :class => "form-inline" } ) do |f| %>
+  <% if course.errors.any? %>
+    <div class="row text-center">
+      <div id="error_explanation">
+        <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
+
+        <ul>
+        <% course.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1 col-md-4 col-md-offset-1">
+      <%= f.label :name, "Nombre del curso" %>
+      <%= f.text_field :name, :class => "form-control" %>
+    </div>
+
+    <div class="col-xs-10 col-xs-offset-1 col-md-3 col-md-offset-0">
+      <%= f.label :year, "Año" %>
+      <%= f.text_field :year, :class => "form-control" %>
+    </div>
+
+    <div class="col-xs-10 col-xs-offset-1 col-md-4 col-md-offset-0">
+      <%= f.label :semester, "Periodo Academico" %>
+      <%= f.text_field :semester, :class => "form-control" %>
+    </div>
+  </div>
+  
+  <div class="row profesor-container-course">
+    <div class="col-xs-10 col-xs-offset-1 col-md-5 col-md-offset-1">
+      <%= f.label :user_id, "Buscar Profesor" %>
+      <%= f.hidden_field :user_id, :class => "form-control" %>
+      <%= text_field_tag :teacher, "", :class => "form-control", placeholder: "Identificacion-Nombre-Email"  %>
+      <button class="teacher-select btn-course" type="button">Asignar</button>
+      <div class="row container-teacher">
+      </div>
+    </div>
+
+    <div class="col-xs-10 col-xs-offset-1 col-md-5 col-md-offset-0">
+      <%= label_tag :estudiante, "Buscar Estudiante" %>
+      <%= text_field_tag :estudiante, "", :class => "form-control", placeholder: "Identificacion-Nombre-Email"  %>
+      <input type="hidden" name="students[]" id="students_" >
+      <button class="matriculate-student btn-course" type="button">Agregar</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="text-center">
+      <h2>Estudiantes para matricular</h2>
+    </div>
+  
+    <div id="container-students" >
+      
+    </div>
+
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Guardar Curso", class: "more-link" %>
+  </div>
+<% end %>
+
+
+<script type="text/javascript">
+  autocomplete_for_students.namespace();
+  autocomplete_for_teacher.namespace();
+</script>

@@ -1,0 +1,60 @@
+<%= form_for (user) do |f| %>
+    <% if user.errors.any? %>
+
+      <div id="error_explanation">
+        <div class="alert alert-danger">
+        The form contains <%= pluralize(@user.errors.count, "error") %>.
+        </div>
+
+        <ul>
+        <% user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+
+     <div class="kv-avatar text-center center-block ">
+       <%= f.file_field :profile_picture,  :class => "file-loading",  :id => "avatar-2" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.text_field :identification,  :class => "form-control", :placeholder => "Identification" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.text_field :name, :class => "form-control", :placeholder => "Nombre" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.text_field :last_name, :class => "form-control", :placeholder => "Apellido" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.email_field :email, :class => "form-control", :placeholder => "Correo Electronico" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.password_field :password, autocomplete: "off", :class => "form-control", :placeholder => "Contraseña(Minino 6 caracteres)" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.password_field :password_confirmation, autocomplete: "off", :class => "form-control", :placeholder => "Confirme la Contraseña" %>
+    </div>
+
+    <div class="form-group">
+      <%=f.label :permission_level, "Estudiante" %>
+      <%= f.radio_button :permission_level, 1 , :checked => true %>
+
+      <%=f.label :permission_level, "Profesor" %>
+      <%= f.radio_button :permission_level, 2 %>
+    </div>
+
+   
+    <div class="action">
+      <%= f.submit "Registrarse",:class => "btn-welcome"  %>
+    </div>
+
+<% end %>
+

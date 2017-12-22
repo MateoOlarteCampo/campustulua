@@ -1,0 +1,215 @@
+$rojo_univalle: #d51b23;
+
+/** ---------------------------------------
+ * Users index for activation Card profile
+ ----------------------------------------*/
+
+.widget-header {
+    padding: 15px 15px 50px 15px;
+    min-height: 125px;
+    position: relative;
+    overflow: hidden;
+    background-color: $rojo_univalle;
+}
+
+.img-wigder {
+    min-height: 300px;
+    position: relative;
+}
+
+.widget-body {
+    padding: 90px 15px 15px;
+    position: relative;
+}
+
+.widget-img {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    left: 50%;
+    margin-left: -60px;
+    top: -80px;
+}
+
+#text-edit-picture {
+    position: absolute;
+    left: 50%;
+    margin-left: -98px;
+    top: 150px;
+    background: rgba(0, 0, 0, 0.65);
+    padding-top: 10px;
+    padding-left: 60px;
+    padding-right: 60px;
+    color: #FFF;
+    padding-bottom: 20px;
+}
+
+.widget-img-profile {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    left: 50%;
+    margin-left: -72px;
+    top: -80px;
+}
+
+.field_with_errors{ 
+  display: inline; 
+}
+
+.img-border-light {
+    box-shadow: 0 0 0 4px #fff;
+}
+
+.div-edit{
+  margin-bottom: 10px;
+  margin-top: 25px;
+}
+
+.action.col-md-6{
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.btn-edit{
+    width: 100%;
+    margin: 0;
+    vertical-align: middle;
+    background: $rojo_univalle;
+    color: white;
+    border: 4;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
+    text-shadow: none;
+    -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none;
+    -o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
+    border-color: white;
+    &:hover{
+        opacity: 0.6; 
+        color:white; 
+    }
+
+    &.cancel{
+      color: $rojo_univalle;
+      background: white;
+    }
+}
+
+.pagination {
+    li{
+      a{
+        color: $rojo_univalle;
+        margin: 5px;
+         &:hover{
+          color: $rojo_univalle;
+        }
+      }
+    }
+    .active{
+      a{   
+        background-color: $rojo_univalle;
+        border-color: $rojo_univalle;
+        &:hover{
+          background-color: $rojo_univalle;
+          border-color: $rojo_univalle;
+        }
+
+        &:focus{
+          background-color: $rojo_univalle;
+          border-color: $rojo_univalle;
+        }
+      }
+    }
+}
+
+.kv-avatar{
+  width:180px;
+  margin-bottom: 10px;
+}
+
+.kv-avatar .file-preview-frame,.kv-avatar .file-preview-frame:hover {
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    text-align: center;
+}
+.kv-avatar .file-input {
+    display: table-cell;
+    max-width: 220px;
+}
+
+
+.btn-default {
+    color: $rojo_univalle;
+    background-color: #fff;
+    border-color: $rojo_univalle;
+    &:hover{
+        background-color: #fff;
+        color: $rojo_univalle;
+        opacity: 0.6; 
+    }
+}
+
+.btn-file {
+    background-color: $rojo_univalle;
+    color: #fff;
+    border-color: $rojo_univalle;
+    &:hover{
+        background-color: $rojo_univalle;
+        border-color: $rojo_univalle;
+        opacity: 0.6; 
+        color:white; 
+    }
+}
+
+
+
+.profile-picture-container {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    left: 50%;
+    margin-left: -100px;
+    top: -100px;
+    border-radius: 100%;
+    box-shadow: 0 0 0 4px #fff;
+    overflow: hidden;
+    
+    img{
+      height: 100%;
+      width: 100%;
+    }
+}
+
+@media (max-width: 700px) {
+  
+    .profile-picture-container {
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        left: 50%;
+        margin-left: -60px;
+        top: -60px;
+        border-radius: 100%;
+        box-shadow: 0 0 0 4px #fff;
+        overflow: hidden;
+    }
+}
+
+
+
+/** ---------------------------------------
+ * User profile stadistics 
+ ----------------------------------------*/
+
+.stadistics{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+

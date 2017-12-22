@@ -1,0 +1,202 @@
+$rojo_univalle: #d51b23;
+
+
+/** ---------------------------------------
+ * common for all document
+ ----------------------------------------*/
+
+h1, h2, h3, h4, h5, h6{
+    font-weight: 600;
+}
+
+* {
+   margin:0;
+   padding:0
+}
+html, body, #wrap {
+   height: 100%;
+}
+body  #wrap {
+   height: auto;
+   min-height: 100%;
+}
+
+
+footer {
+   position: relative;
+   clear: both;
+}
+
+.turbolinks-progress-bar {
+  background-color: $rojo_univalle;
+}
+
+
+/** ---------------------------------------
+ * Navbar common
+ ----------------------------------------*/
+
+.navbar  {
+  background-color: $rojo_univalle;
+  color:white;
+  min-height: 120px;
+  margin-bottom: 0px;
+
+  .active{
+  background-color: white !important;
+  a{
+  color: $rojo_univalle !important;
+  }
+}
+
+  .container-fluid{
+    padding-left: 0;
+    padding-right: 0;     
+  }
+
+  #navbar-top{
+    background-color: white;
+    h1{
+        color: $rojo_univalle;
+    }
+    h2{
+        color: $rojo_univalle;
+    }
+  }
+
+  #navbar-bottom{
+    padding-left: 0;
+    padding-right: 0;
+  }
+	#navbar-elements-top {
+    ul{
+      background-color: $rojo_univalle;
+      color:white;
+    }
+		li{
+      background-color: $rojo_univalle;
+      color:white;
+      &:hover {
+        background-color: white;
+        > a{
+          color: $rojo_univalle;
+          background-color: white;
+        }
+      }
+      &:focus {
+        background-color: $rojo_univalle;
+        > a{
+          color: white;
+          background-color: $rojo_univalle;
+        }
+      }
+                           
+			a {
+				color:#fff;
+				font-size: 130%;
+
+        &:hover {
+          color: $rojo_univalle;
+          background-color: white;
+        }
+
+        &:focus {
+           color: $rojo_univalle;
+          background-color: white;
+        }
+			} 
+
+	   }
+     .dropdown-menu{
+      width: 100%;
+      padding: 0;
+      li{
+        height: 40px;
+      }
+      .divider{
+        height: 2px;
+        margin: 0;
+        background-color: white;
+      }
+      
+     }    
+	}
+}
+
+
+h1.univalle{
+	margin-bottom: 0;
+}
+
+h2{
+    &.campus{
+
+	  margin: 0;
+    margin-bottom: 5px;
+    }
+
+    &.register {
+
+        color: white;
+        line-height: 30px;
+    }
+}
+
+.navbar-default{
+  .navbar-toggle{
+  background-color: white;
+  border-color: transparent;
+  .icon-bar{
+    background-color: $rojo_univalle;
+  }
+}
+}
+
+
+.nav > li > a {
+    padding: 5px 5px;
+}
+
+.profile-picture {
+    width: 50px;
+    height: 50px;
+}
+
+
+.logo-container {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    left: 50%;
+    margin-left: -380px;
+     img{
+      height: 100%;
+      width: 100%;
+    }
+}
+
+
+/** ---------------------------------------
+ * Footer
+ ----------------------------------------*/
+.footer {
+
+    background-color: $rojo_univalle;
+    clear: both;
+    height: auto;
+    padding-top: 0px;
+    color:#fff;
+
+    .row{
+      margin-bottom: 15px;
+    }
+}
+
+.contact a {
+    color:#E5E8E8;
+    text-decoration: none;
+ }
+
+.contact a:hover {
+    color: #CCCCCC;
+ }

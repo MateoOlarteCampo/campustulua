@@ -1,0 +1,85 @@
+<header>
+  <nav class="navbar navbar-default navbar-static-top">
+    <div class="container-fluid">
+
+      <!--  Navigation bar top responsive-->
+      <div id="navbar-top" class="col-md-12">
+
+          <div id="profile-picture-container" class="logo-container">
+            <%= image_tag "logo.jpg", alt: "", id: "profile-picture-edit", class: "img-border-light" %>
+          </div>
+
+          <div class="row text-center">
+              <h1 class="univalle">Universidad del Valle Sede Tuluá</h1>
+          </div>
+
+          <div class="row text-center">
+              <h2 class="campus">Campus Virtual</h2>
+        </div>
+      </div>
+      <!--  Navigation bar top responsive end -->
+
+      <!--  Navigation bar bottom responsive-->
+      <div id="navbar-bottom" class="col-md-12">
+        <% if someone_is_logged_in? %>
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+        <% end %> 
+
+        <% if someone_is_logged_in? %>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul id="navbar-elements-top" class="nav  nav-justified">
+                <li class=<%=active_class(root_path) %>>
+                  <%= link_to (root_path), :onclick => 'this.blur()'  do %>
+                    <span class="glyphicon glyphicon-home"></span>
+                    <%= "Usuarios por activacion" if is_admin_user?(current_user) %>
+                    <%= "Home" if is_teacher_user?(current_user) || is_student_user?(current_user) %>
+                  <% end %>
+                </li>
+                <li class=<%=active_class(courses_path) %>>
+                  <%= link_to (courses_path), :onclick => 'this.blur()'  do %>
+                    <span class="glyphicon glyphicon-list-alt"></span>
+                    Cursos
+                  <% end %>
+                </li>
+                <li class=<%=active_class(articles_path) %>> 
+                  <%= link_to (articles_path), :onclick => 'this.blur()' do %>
+                    <span class="glyphicon glyphicon-pencil"></span>
+                    Blog
+                  <% end %>
+                </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="this.blur();">
+                    <img alt="Profile Picture" class="profile-picture img-circle" src=<%= current_user.profile_picture.thumb %> >
+                     <%= "#{current_user.name.capitalize} #{current_user.last_name.capitalize}" %>
+                    <b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><%= link_to "Mi Perfil", user_path(current_user) %></li>
+                    <li class="divider"></li>
+                    <li><%= link_to "Cerrar sesion", sign_out_path, method: "delete" %></li>
+                  </ul>
+                </li>
+              </ul>
+          </div>
+
+        <% else %>
+
+            <div class="col-sm-12 col-md-5 col-md-offset-7 text-center">
+               <%= render 'sessions/form' %>
+            </div>  
+        <% end %>  
+      
+      </div>
+      <!--  Navigation bar botoom end-->
+    
+    </div><!-- /.container-fluid -->
+  </nav>
+</header>
+<!--  Navigation bar end-->

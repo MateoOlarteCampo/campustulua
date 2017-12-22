@@ -1,0 +1,173 @@
+$rojo_univalle: #d51b23;
+
+a{
+    color:$rojo_univalle;
+    &:hover{
+        color:red;
+    }
+    &:focus{
+        color:red;
+    }
+}
+
+.container-courses{
+    margin-bottom: 15px;
+}
+
+.post .post-thumb-course {
+    overflow: hidden;
+    background-color: $rojo_univalle;
+    min-height: 100px;
+    max-height: 100px;
+}
+
+.container-btn-course-edit {
+    position: absolute;
+    width: 55px;
+    height: 55px;
+    left: 50%;
+    margin-left: -55px;
+    border-radius: 50%;
+    top: 80px;
+    background-color: white;
+}
+
+.class-course-publications{
+    .panel{
+        border-color: $rojo_univalle;
+    }
+    .panel-header{
+        background-color: $rojo_univalle;
+        color:white;
+    }
+}
+
+.container-btn-course-delete {
+    position: absolute;
+    width: 55px;
+    height: 55px;
+    left: 50%;
+    border-radius: 50%;
+    top: 80px;
+    background-color: white;
+}
+
+.title-course-new{
+	padding-bottom: 40px;
+}
+
+#search-student{
+    margin-bottom: 20px;
+}
+.title-matriculate{
+    margin-bottom: 20px;
+}
+
+.tt-menu {
+    width: 250px;
+    margin: 12px 0;
+    padding: 8px 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+.tt-suggestion:hover {
+    cursor: pointer;
+    color: #fff;
+    background-color: $rojo_univalle;
+}
+
+.tt-suggestion {
+    padding: 3px 10px;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.img-search{
+	width: 40px;
+	height: 40px;
+}
+
+#estudiante, #teacher{
+    vertical-align: middle !important;
+    width: 250px;
+}
+
+.profesor-container-course{
+    margin-top: 20px;
+}
+
+.container-teacher{
+    margin-top: 10px;
+}
+
+
+
+.panel-body-course {
+    padding: 40px 10px 0px;
+    position: relative;
+}
+
+.panel-header-course {
+    padding: 15px 15px 50px 15px;
+    min-height: 60px;
+    max-height: 60px;
+    position: relative;
+    overflow: hidden;
+    background-color: #d51b23;
+}
+
+.panel-img-course {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    left: 50%;
+    margin-left: -40px;
+    top: -40px;
+}
+
+p.identification{
+    margin: 3px 0 5px;
+}
+
+h5.name{
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+#container-students{
+    overflow-y: scroll;
+overflow-x: hidden;
+height: 350px;
+}
+
+
+.btn-course{
+    margin: 0;
+    padding: 0 5px;
+    vertical-align: middle;
+    background: $rojo_univalle;
+    border: 4;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 30px;
+    color: white;
+    -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
+    text-shadow: none;
+    -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none;
+    -o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
+    border-color: white;
+    &:hover{
+        opacity: 0.6; 
+        color:white; 
+ 
+    }
+}

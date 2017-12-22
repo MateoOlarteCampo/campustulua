@@ -1,0 +1,14 @@
+<div id="article-container" class="container-fluid">
+	<div class="row">
+	    <%= link_to 'Crear nuevo articulo', new_article_path, class: "more-link" %>
+	</div>
+
+  <div class="row">
+    <%=  render partial: "article", collection: @articles %>                       
+  </div> 
+
+  <div class="row text-center">
+	<%= will_paginate @articles %>
+	</div> 
+</div>
+

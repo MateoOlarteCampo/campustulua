@@ -1,0 +1,45 @@
+<div class="col-md-4">
+  <article class="post hentry panel panel-default">
+    
+    <figure class="post-thumb">
+      <% unless article.picture.file.nil? %>
+        <img class="img-responsive" src=<%= article.picture.thumb %> >
+      <% end %>
+    </figure> 
+
+    <header class="entry-header">
+      <% if current_user?(article.user) %>
+        <%= link_to edit_article_path(article), class: "container-btn-article-edit" do %>
+          <span  id="edit-post-btn" class="glyphicon glyphicon-pencil"></span>
+        <% end %>
+
+        <%= link_to article, method: :delete, data: { confirm: 'Are you sure?' }, class: "container-btn-article-delete" do %>
+          <span  id="delete-post-btn" class="glyphicon glyphicon-trash"></span>
+        <% end %>
+      <% end %>
+
+      <h2 class="entry-title"> <%= article.title %> </h2>
+      <div class="entry-meta">
+          <span class="byline">
+              <span class="author vcard">
+                  Publicado por: <%= "#{article.user.name} #{article.user.last_name}" %> <%= time_ago_in_words(article.created_at) %>
+              </span>
+          </span>
+      </div> 
+    </header> 
+
+    <div class="entry-content">
+        <span class="screen-reader-text"></span>
+        <p class="text-justified"> <%= article.body %> </p>
+        <%= link_to "Continuar leyendo ...", article, class: "more-link" %>
+    </div> 
+
+    <footer class="entry-footer clearfix">                          
+        <div class="footer-meta clearfix">  
+              <span class="col-xs-6 col-md-6 text-left"> <%= article.comments.count %> Comentarios</span>
+              <span class="col-xs-6 col-md-6 text-right"><%= article.visits_count %> Visitas</span>
+        </div> 
+    </footer> 
+
+  </article>
+</div>

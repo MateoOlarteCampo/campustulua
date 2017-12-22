@@ -1,0 +1,41 @@
+<div class="col-md-3">
+  <article class="post hentry panel panel-default">
+    
+    <figure class="post-thumb-course">
+     
+    </figure> 
+
+    <header class="entry-header">
+      <% if is_admin_user?(current_user) && course.validate_date? %>
+        <%= link_to edit_course_path(course), class: "container-btn-course-edit" do %>
+          <span  id="edit-post-btn" class="glyphicon glyphicon-pencil"></span>
+        <% end %>
+
+        <%= link_to course, method: :delete, data: { confirm: 'Are you sure?' }, class: "container-btn-course-delete" do %>
+          <span  id="delete-post-btn" class="glyphicon glyphicon-trash"></span>
+        <% end %>
+      <% end %>
+
+      <h2 class="entry-title"> <%= course.name %> </h2>
+      <div class="entry-meta">
+          <span class="byline">
+              <span class="author vcard">
+                Profesor: <%= "#{course.teacher.name} #{course.teacher.last_name}" %> 
+              </span>
+          </span>
+      </div> 
+      <div class="entry-meta">
+          <span class="byline">
+              <span class="author vcard">
+                Periodo Academico: <%if course.semester==1 %> <%= "Febrero-Junio de #{course.year}" %> <% else %> <%= "Agosto-Diciembre de #{course.year}" %> <% end %>   
+              </span>
+          </span>
+      </div> 
+    </header> 
+
+    <div class="entry-content">
+        <span class="screen-reader-text"></span>
+        <%= link_to "Visitar curso", course, class: "more-link" %>
+    </div> 
+  </article>
+</div>

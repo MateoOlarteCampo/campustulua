@@ -1,0 +1,59 @@
+<div id="container-article" class="container-fluid">
+  <div class="row">
+
+    <div class="col-md-12">
+      <article class="post panel panel-default">
+        
+        <figure class="post-thumb-article">
+          <% unless @article.picture.file.nil? %>
+            <img class="img-responsive" src=<%= @article.picture %> >
+          <% end %>
+        </figure> 
+
+        <header class="entry-header">
+          <% if current_user?(@article.user) %>
+            <%= link_to edit_article_path(@article), class: "container-btn-article-edit show" do %>
+              <span  id="edit-post-btn" class="glyphicon glyphicon-pencil"></span>
+            <% end %>
+
+            <%= link_to @article, method: :delete, data: { confirm: '¿Deseas realmente eliminar tu artículo?' }, class: "container-btn-article-delete show" do %>
+              <span  id="delete-post-btn" class="glyphicon glyphicon-trash"></span>
+            <% end %>
+          <% end %>
+
+          <h1 class="entry-title title-show"> <%= @article.title %> </h1>
+          <div class="entry-meta">
+              <span class="byline">
+                  <span class="author vcard">
+                      Publicado por: <%= "#{@article.user.name} #{@article.user.last_name}" %> <%= time_ago_in_words(@article.created_at) %>
+                  </span>
+              </span>
+          </div> 
+        </header> 
+
+        <div class="body-article">
+            <span class="screen-reader-text"></span>
+            <p class="col-md-8 col-md-offset-2 text-justified"> <%=  @article.body %> </p>
+        </div> 
+
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <%= render 'comments/form', comment: @comment, article: @article %>
+          </div>
+          <h3 class="col-md-12 text-center">Comentarios</h3>
+          <div id="comments" class="col-md-8 col-md-offset-2">
+            <% @article.comments.each do |comment| %>
+              <div id="comment" class="panel panel-default">
+                <p> <%= comment.body %> </p>
+                <p> Comentado por: <%= "#{comment.user.name} #{comment.user.last_name}" %> <%= time_ago_in_words(comment.created_at) %> </p>
+              </div> 
+            <% end %>
+          </div>
+        </div>
+        
+      </article>
+      
+    </div> 
+  </div>
+</div>
+

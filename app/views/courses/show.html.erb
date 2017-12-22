@@ -1,0 +1,139 @@
+<div class="container container-courses">
+	
+	<div class="row">
+	   
+	  <div class="text-center">
+		  <h1><%= @course.name %>  </h1>
+
+		  <% if is_admin_user?(current_user) %>
+			  <%= link_to edit_course_path(@course)do %>
+			  	Editar 
+		      <span  class="glyphicon glyphicon-pencil"></span>
+		    <% end %>
+	    <% end %>
+	  	
+	  </div>
+
+	  	<div class="col-md-12 text-center">
+	  		<h4>Periodo Academico <%if @course.semester==1 %> <%= "Febrero-Junio de #{@course.year}" %> <% else %>	<%= "Agosto-Diciembre de #{@course.year}" %> <% end %>	</h4>
+	  	</div>
+		
+		<div class="row">
+			<% if  @course.course_student?(current_user) %>
+				<div class="col-md-6 text-center">
+					<h3>Calificacion </h3>
+					<h3> <%= "#{current_user.calification(@course)}" %></h3>
+				</div>
+			<% end %>
+
+			<div class="col-md-6">
+				<h3 class="text-center">Profesor</h3>
+				<div class="col-xs-6 col-md-6 col-md-offset-3">
+          <div class="panel panel-default">
+              <div class="panel-header-course bg-primary"></div>
+              <div class="panel-body-course text-center">
+                  <img alt="Profile Picture" class="panel-img-course img-circle img-border-light" src=<%= "#{@course.teacher.profile_picture.url}"%>>
+                  <p class="identification"><%= @course.teacher.email %> </p>
+                  <h5 class="name"><%= "#{@course.teacher.name} #{@course.teacher.last_name}" %></h5>
+              </div>
+          </div>
+       </div> 
+				
+			</div>
+
+			<% if current_user?(@course.teacher) && @course.validate_date?  %>
+				<div class="col-md-6">
+					<h3 class="text-center">Agregar publicacion</h3>
+					<%= render 'archives/form', archive: @archive, course: @course %>
+				</div>
+			<% end %> 
+		</div>
+
+		<div class="row class-course-publications">
+		 <h3 class="text-center">Material de clase</h3>
+					<% @course.archives.each do |archive| %>
+						<div class="col-md-4">
+							<div class="panel panel-default">
+							<div class="text-center panel panel-header">
+								<h4><%= archive.name %></h4>
+							</div>
+							<div class="panel-body text-justified">
+								<p> <%= archive.description %></p>
+							</div>	
+							<div class="text-center">
+								<% unless archive.file.url.nil? %>
+									<%= link_to "Descargar archivo", course_download_file_path(@course, archive), target: "_blank" %>
+								<% end %>
+							</div>
+							</div>
+						</div>
+					<% end %>
+		</div>
+	
+	</div>
+
+	<% if current_user?(@course.teacher) %>
+		<div class="row">
+	    <div class="title-matriculate text-center">
+	      <h3>Estudiantes matriculados</h3>
+	    </div>
+
+	    <% @course.students.each do |student| %>
+	    	<div class="col-xs-6 col-md-2">
+          <div class="panel panel-default">
+              <div class="panel-header-course bg-primary"></div>
+              <div class="panel-body-course text-center">
+                  <img alt="Profile Picture" class="panel-img-course img-circle img-border-light" src=<%= "#{student.profile_picture.url}"%>>
+                  <p class="identification"><%= student.identification %> </p>
+                  <div id="calification-form" style="display: none">
+			              <%= form_for @course, url: add_calification_path(@course, student), remote: true, method: "patch", html: {id: "add-calification", data_type: "json"} do |f| %>
+			                <div class="form-group">
+			                	<%= number_field_tag :calification, "#{student.calification(@course)}", step: "0.1", min: "0", max: "5", class: "form-control" %> 
+			                </div>
+			                <div class="form-group">
+			                  <%= f.submit "Calificar",:class => "btn-welcome", id: "btn-calificar" %>
+			                </div>
+			              <% end %>
+			            </div>
+                  <p id="calification-label">
+	                  <%= "Nota: #{student.calification(@course)}" %> 
+	                  <% if  @course.validate_date?  %>
+			      					<span  id="edit-calification" class="glyphicon glyphicon-pencil"></span>
+			      				<% end %>
+                  </p>
+                  <h5 class="name"><%= "#{student.name} #{student.last_name}" %></h5>
+              </div>
+          </div>
+        </div> 
+	    <% end %>
+	  </div>
+  <% end %>
+
+	
+	<% if current_user?(@course.teacher) && @course.validate_date? %>
+		<div class="row">
+	    <div class="title-matriculate text-center">
+	      <h3>Matricular estudiantes</h3>
+	    </div>
+
+	    <div id="search-student" class="col-xs-11 col-xs-offset-1 col-md-12 form-inline">
+	      <%= label_tag :estudiante, "Buscar Estudiante" %>
+	      <%= text_field_tag :estudiante, "", :class => "form-control", placeholder: "Identificacion-Nombre-Email"  %>
+	      <button class="matriculate-student" type="button">Agregar</button>
+	  	</div>
+
+			<%= form_for @course, url:  matriculate_students_path(@course), method: "patch" do |f| %>
+				<div id="container-students" class="col-xs-12 col-md-12"> </div>
+	      <div class="col-md-4 col-md-offset-4 actions">
+	        <%= f.submit "Matricular",:class => "btn-welcome"  %>
+	      </div>
+	    <% end %>
+	  </div>
+  <% end %>
+</div>
+
+
+<script type="text/javascript">
+  autocomplete_for_students.namespace();
+</script>
+

@@ -1,0 +1,23 @@
+<div id=<%= "#{user.id}" %> class="col-md-3">
+    <div class="panel panel-default">
+        <div class="widget-header bg-primary"></div>
+        <div class="widget-body text-center">
+            <img alt="Profile Picture" class="widget-img img-circle img-border-light" src=<%= user.profile_picture.thumb %>>
+            <h4 class="mar-no"><%= "#{user.name} #{user.last_name}" %></h4>
+            <p>
+              <% if user.permission_level == 1 %>
+                <%= "Estudiante"  %> 
+              <% else %>
+                <%= "Profesor"  %> 
+              <% end %>
+            </p>
+            <div>
+              <%= form_for :user, url: activate_account_path(user), remote: true, method: "patch", html: {id: "activate_account", :"data-type" => "json"} do |f| %>
+                <div class="action">
+                  <%= f.submit "Activar cuenta",:class => "btn-welcome"  %>
+                </div>
+              <% end %>
+            </div>
+        </div>
+    </div>
+</div>

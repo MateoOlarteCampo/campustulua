@@ -1,0 +1,13 @@
+<% provide(:title, "Home") %>
+
+<% if is_admin_user?(current_user) %>
+	<%= render 'users/activations_users/users_for_activation', users: @users %>
+<% else %>
+	<%= render 'home_users', articles: @articles%>
+	<div class="container-fluid">
+		<div class="row">
+			<h2 class="text-center">Cursos actuales</h2>
+	    	<%=  render partial: "courses/course", collection: @courses %>                       
+	  	</div> 
+	</div>
+<% end %>
